@@ -2,24 +2,48 @@
     ◦ method  daysTo() returns number of complete days between any pair of dates
     ◦ For example:  d1.daysTo(d2) should return quantity of complete days from d1 to d2
 */
-console.log('Task1');
 
-var millisecondsPerDay = 24 * 60 * 60 * 1000;
-Date.prototype.msPERDAY = millisecondsPerDay;
-// Return quantity quantity of complete days from this to d
-// If d less than this - return -1
-Date.prototype.daysTo = function (d) {
-    return d > this ? Math.floor((d-this)/millisecondsPerDay) : -1;
-};
+let showDiffOfDays = () => {
+    console.log('Task1');
 
-let d1 = new Date(2019,1,15); 
-let d2 = new Date(2019,1,30);
-let d3 = new Date(2020,1,30, 3, 24, 0);
+    var millisecondsPerDay = 24 * 60 * 60 * 1000;
+    Date.prototype.msPERDAY = millisecondsPerDay;
+    // Return quantity quantity of complete days from this to d
+    // If d less than this - return -1
+    Date.prototype.daysTo = function (d) {
+        return d > this ? Math.floor((d-this)/millisecondsPerDay) : -1;
+    };
+    
+    let d1 = new Date(2019,1,15); 
+    let d2 = new Date(2019,1,30);
+    let d3 = new Date(2020,1,30, 3, 24, 0);
+    
+    console.log(d1.daysTo(d2));
+    console.log(d2.daysTo(d1));
+    console.log(d1.daysTo(d3));
+    
+    // Try enter data and calculeted days
+    let today = new Date();
+    let date1 = new Date();
+    let date2 = new Date();   
+    date1 = new Date (prompt("Please enter date1:", today.getFullYear()+"-"+today.getMonth()+"-"+today.getDate()));
+    date2 = new Date (prompt("Please enter date2:", today.getFullYear()+"-"+today.getMonth()+"-"+today.getDate()));
+    
+    if (date1 !== null) {
+        x1 = "Date 1: " + date1;
+        document.getElementById("demo1").innerHTML = x1;
+    }
+    
+    if (date2 !== null) {
+        x2 = "Date 2: " + date2;
+        document.getElementById("demo2").innerHTML = x2;
+    }
 
-
-console.log(d1.daysTo(d2));
-console.log(d2.daysTo(d1));
-console.log(d1.daysTo(d3));
+    result = "Result: "+date1.daysTo(date2);
+    console.log(result);
+    document.getElementById("demo-result").innerHTML = result;
+    // alert(result);
+}
 
 
 
@@ -48,6 +72,10 @@ Please note that input shall remain intact.
     });
     
     console.log(sortedArr);  
+
+    let showOrdersArray = () => {
+        alert(JSON.stringify(sortedArr, null, 4));
+    }
 
 /*        2.3. Develop a program “Object Projection”. 
 Input: any JSON object; prototype object. 
@@ -93,5 +121,10 @@ let projection = (obj, proj) => {
 }
 
 console.log(projection(src,prot));
+
+let showProjection = () => {
+    alert(JSON.stringify(projection(src,prot), null, 4));
+}
+
 
 
